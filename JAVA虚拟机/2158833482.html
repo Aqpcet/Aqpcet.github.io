@@ -1,0 +1,317 @@
+<!DOCTYPE html><html class="theme-next muse use-motion" lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3"><meta name="google-site-verification" content="dpIIVMzh-gRhFOYPiR6kCwKI0b-E0t-3pXeid6YJ7GQ"><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet"><link href="/css/main.css?v=6.6.0" rel="stylesheet"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.6.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.6.0"><link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222"><script id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",version:"6.6.0",sidebar:{position:"right",display:"hide",offset:12,b2t:!1,scrollpercent:!1,onmobile:!1},fancybox:!0,fastclick:!0,lazyload:!0,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><meta name="description" content="必应壁纸(2019.07.15)© Tommy Tsutsui/Getty Images"><meta name="keywords" content="JVM"><meta property="og:type" content="article"><meta property="og:title" content="JAVA虚拟机"><meta property="og:url" content="https://blog.xu-lin.top/JAVA虚拟机/2158833482.html"><meta property="og:site_name" content="无用"><meta property="og:description" content="必应壁纸(2019.07.15)© Tommy Tsutsui/Getty Images"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2021-03-30T18:56:07.941Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="JAVA虚拟机"><meta name="twitter:description" content="必应壁纸(2019.07.15)© Tommy Tsutsui/Getty Images"><link rel="alternate" href="/atom.xml" title="无用" type="application/atom+xml"><link rel="canonical" href="https://blog.xu-lin.top/JAVA虚拟机/2158833482.html"><script id="page.configurations">CONFIG.page={sidebar:""}</script><title>JAVA虚拟机 | 无用</title><script async src="https://www.googletagmanager.com/gtag/js?id=UA-129275423-1"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-129275423-1")</script><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-right page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">无用</span><span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">有涯求无涯</h1></div><div class="site-nav-toggle"><button aria-label="切换导航栏"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签<span class="badge">62</span></a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档<span class="badge">33</span></a></li><li class="menu-item menu-item-about"><a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>关于</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"><input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://blog.xu-lin.top/JAVA虚拟机/2158833482.html"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="xulin"><meta itemprop="description" content="分享所知，做自己"><meta itemprop="image" content="/images/avatar.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="无用"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">JAVA虚拟机</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建时间：2019-07-15 18:08:00" itemprop="dateCreated datePublished" datetime="2019-07-15T18:08:00+08:00">2019-07-15</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/核/" itemprop="url" rel="index"><span itemprop="name">核</span></a></span></span> <span class="post-comments-count"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span> <a href="/JAVA虚拟机/2158833482.html#comments" itemprop="discussionUrl"><span class="post-meta-item-text">评论数：</span><span class="post-comments-count valine-comment-count" data-xid="/JAVA虚拟机/2158833482.html" itemprop="commentCount"></span></a></span><div class="post-symbolscount"><span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i></span> <span class="post-meta-item-text">本文字数：</span> <span title="本文字数">4.2k</span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-clock-o"></i></span> <span class="post-meta-item-text">阅读时长 &asymp;</span> <span title="阅读时长">4 分钟</span></div></div></header><div class="post-body han-init-context" itemprop="articleBody"><p></p><h1 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h1><h2 id="1-JVM-的主要组成部分及其作用？"><a href="#1-JVM-的主要组成部分及其作用？" class="headerlink" title="1.JVM 的主要组成部分及其作用？"></a>1.JVM 的主要组成部分及其作用？</h2><ul><li>类加载器(ClassLoader)</li><li>运行时数据区(Runtime Data Area)</li><li>执行引擎(Execution Engine)</li><li>本地库接口(Native Interface)</li></ul><p><strong>组件的作用：</strong></p><p>首先通过类加载器（ClassLoader）会把 Java 代码转换成字节码<br>运行时数据区（Runtime Data Area）再把字节码加载到内存中，而字节码文件只是 JVM 的一套指令集规范，并不能直接交给底层操作系统去执行<br>因此需要特定的命令解析器执行引擎（Execution Engine），将字节码翻译成底层系统指令，再交由 CPU 去执行<br>而这个过程中需要调用其他语言的本地库接口（Native Interface）来实现整个程序的功能</p><h2 id="2-JVM-运行时数据区？"><a href="#2-JVM-运行时数据区？" class="headerlink" title="2.JVM 运行时数据区？"></a>2.JVM 运行时数据区？</h2><p>不同虚拟机的运行时数据区可能略微有所不同，但都会遵从 Java 虚拟机规范<br>Java 虚拟机规范规定的区域分为以下 5 个部分：</p><ul><li>程序计数器（Program Counter Register）：当前线程所执行的字节码的行号指示器，字节码解析器的工作是通过改变这个计数器的值，来选取下一条需要执行的字节码指令，分支、循环、跳转、异常处理、线程恢复等基础功能，都需要依赖这个计数器来完成</li><li>Java 虚拟机栈（Java Virtual Machine Stacks）：用于存储局部变量表、操作数栈、动态链接、方法出口等信息</li><li>本地方法栈（Native Method Stack）：与虚拟机栈的作用是一样的，只不过虚拟机栈是服务 Java 方法的，而本地方法栈是为虚拟机调用 Native 方法服务的</li><li>Java 堆（Java Heap）：Java 虚拟机中内存最大的一块，是被所有线程共享的，几乎所有的对象实例都在这里分配内存</li><li>方法区（Methed Area）：用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译后的代码等数据</li></ul><h2 id="3-堆栈的区别？"><a href="#3-堆栈的区别？" class="headerlink" title="3.堆栈的区别？"></a>3.堆栈的区别？</h2><table><thead><tr><th></th><th style="text-align:center">堆</th><th style="text-align:center">栈</th></tr></thead><tbody><tr><td>功能</td><td style="text-align:center">存放对象</td><td style="text-align:center">执行程序</td></tr><tr><td>共享性</td><td style="text-align:center">线程共享</td><td style="text-align:center">线程私有</td></tr><tr><td>空间大小</td><td style="text-align:center">远大于栈</td><td style="text-align:center">远小于堆</td></tr></tbody></table><h2 id="4-什么是双亲委派模型？"><a href="#4-什么是双亲委派模型？" class="headerlink" title="4.什么是双亲委派模型？"></a>4.什么是双亲委派模型？</h2><p>在介绍双亲委派模型之前先说下类加载器<br>对于任意一个类，都需要由加载它的类加载器和这个类本身一同确立在 JVM 中的唯一性，每一个类加载器，都有一个独立的类名称空间<br>类加载器就是根据指定全限定名称将 class 文件加载到 JVM 内存，然后再转化为 class 对象</p><p><strong>类加载器分类：</strong></p><ul><li>启动类加载器（Bootstrap ClassLoader），是虚拟机自身的一部分，用来加载 Java_HOME/lib/目录中的，或者被 -Xbootclasspath 参数所指定的路径中并且被虚拟机识别的类库</li><li>其他类加载器：</li></ul><p>扩展类加载器（Extension ClassLoader）：负责加载\lib\ext 目录或 Java. ext. dirs 系统变量指定的路径中的所有类库</p><p>应用程序类加载器（Application ClassLoader）。负责加载用户类路径（classpath）上的指定类库，我们可以直接使用这个类加载器。一般情况，如果我们没有自定义类加载器默认就是用这个加载器</p><p>双亲委派模型：如果一个类加载器收到了类加载的请求，它首先不会自己去加载这个类，而是把这个请求委派给父类加载器去完成</p><p>每一层的类加载器都是如此，这样所有的加载请求都会被传送到顶层的启动类加载器中，只有当父加载无法完成加载请求（它的搜索范围中没找到所需的类）时，子加载器才会尝试去加载类</p><h2 id="5-类加载的执行过程？"><a href="#5-类加载的执行过程？" class="headerlink" title="5.类加载的执行过程？"></a>5.类加载的执行过程？</h2><p>类装载分为以下 5 个步骤：</p><ul><li>加载：根据查找路径找到相应的 class 文件然后导入</li><li>检查：检查加载的 class 文件的正确性</li><li>准备：给类中的静态变量分配内存空间</li><li>解析：虚拟机将常量池中的符号引用替换成直接引用的过程</li></ul><p>符号引用就理解为一个标示，而在直接引用直接指向内存中的地址</p><ul><li>初始化：对静态变量和静态代码块执行初始化工作</li></ul><h2 id="6-怎么判断对象是否可以被回收？"><a href="#6-怎么判断对象是否可以被回收？" class="headerlink" title="6. 怎么判断对象是否可以被回收？"></a>6. 怎么判断对象是否可以被回收？</h2><p>一般有两种方法来判断：</p><ul><li>引用计数器：为每个对象创建一个引用计数，有对象引用时计数器 +1，引用被释放时计数 -1，当计数器为 0 时就可以被回收</li></ul><p>它有一个缺点不能解决循环引用的问题</p><ul><li>可达性分析：从 GC Roots 开始向下搜索，搜索所走过的路径称为引用链</li></ul><p>当一个对象到 GC Roots 没有任何引用链相连时，则证明此对象是可以被回收的</p><h2 id="7-JAVA-中都有哪些引用类型？"><a href="#7-JAVA-中都有哪些引用类型？" class="headerlink" title="7.JAVA 中都有哪些引用类型？"></a>7.JAVA 中都有哪些引用类型？</h2><ul><li>强引用：发生 gc 的时候不会被回收</li><li>软引用：有用但不是必须的对象，在发生内存溢出之前会被回收</li><li>弱引用：有用但不是必须的对象，在下一次 GC 时会被回收</li><li>虚引用（幽灵引用/幻影引用）：无法通过虚引用获得对象，用 PhantomReference 实现虚引用，虚引用的用途是在 gc 时返回一个通知</li></ul><h2 id="8-JVM-有哪些垃圾回收算法？"><a href="#8-JVM-有哪些垃圾回收算法？" class="headerlink" title="8.JVM 有哪些垃圾回收算法？"></a>8.JVM 有哪些垃圾回收算法？</h2><ul><li>标记-清除算法：标记无用对象，然后进行清除回收</li></ul><p>缺点：效率不高，无法清除垃圾碎片</p><ul><li>复制算法：按照容量划分二个大小相等的内存区域，当一块用完的时候将活着的对象复制到另一块上，然后再把已使用的内存空间一次清理掉</li></ul><p>缺点：内存使用率不高，只有原来的一半</p><ul><li>标记-整理算法：标记无用对象，让所有存活的对象都向一端移动，然后直接清除掉端边界以外的内存</li></ul><p>缺点：内存变动频繁，效率上比复制算法差很多</p><ul><li>分代算法：根据对象存活周期的不同将内存划分为几块，一般是新生代和老年代，新生代基本采用复制算法，老年代采用标记整理算法</li></ul><h2 id="9-JVM-有哪些垃圾回收器？"><a href="#9-JVM-有哪些垃圾回收器？" class="headerlink" title="9.JVM 有哪些垃圾回收器？"></a>9.JVM 有哪些垃圾回收器？</h2><ul><li>Serial：最早的单线程串行垃圾回收器</li><li>Serial Old：Serial 垃圾回收器的老年版本，同样也是单线程的，可以作为 CMS 垃圾回收器的备选预案</li><li>ParNew：是 Serial 的多线程版本</li><li>Parallel 和 ParNew 收集器类似是多线程的，但 Parallel 是吞吐量优先的收集器，可以牺牲等待时间换取系统的吞吐量</li><li>Parallel Old 是 Parallel 老生代版本，Parallel 使用的是复制的内存回收算法，Parallel Old 使用的是标记-整理的内存回收算法</li><li>CMS：一种以获得最短停顿时间为目标的收集器，非常适用 B/S 系统</li><li>G1：一种兼顾吞吐量和停顿时间的 GC 实现，是 JDK 9 以后的默认 GC 选项</li></ul><h2 id="10-CMS-垃圾回收器？"><a href="#10-CMS-垃圾回收器？" class="headerlink" title="10. CMS 垃圾回收器？"></a>10. CMS 垃圾回收器？</h2><p>CMS 是英文 Concurrent Mark-Sweep 的简称，是以牺牲吞吐量为代价来获得最短回收停顿时间的垃圾回收器<br>对于要求服务器响应速度的应用上，这种垃圾回收器非常适合<br>在启动 JVM 的参数加上“-XX:+UseConcMarkSweepGC”来指定使用 CMS 垃圾回收器<br>CMS 使用的是标记-清除的算法实现的，所以在 gc 的时候回产生大量的内存碎片，当剩余内存不能满足程序运行要求时，系统将会出现 Concurrent Mode Failure，临时 CMS 会采用 Serial Old 回收器进行垃圾清除，此时的性能将会被降低</p><h2 id="11-新生代垃圾回收器和老生代垃圾回收器都有哪些？有什么区别？"><a href="#11-新生代垃圾回收器和老生代垃圾回收器都有哪些？有什么区别？" class="headerlink" title="11.新生代垃圾回收器和老生代垃圾回收器都有哪些？有什么区别？"></a>11.新生代垃圾回收器和老生代垃圾回收器都有哪些？有什么区别？</h2><ul><li>新生代回收器：Serial、ParNew、Parallel Scavenge</li><li>老年代回收器：Serial Old、Parallel Old、CMS</li><li>整堆回收器：G1</li></ul><p>新生代垃圾回收器一般采用的是复制算法<br>复制算法的优点是效率高，缺点是内存利用率低<br>老年代回收器一般采用的是标记-整理的算法进行垃圾回收</p><h2 id="12-分代垃圾回收器是怎么工作的？"><a href="#12-分代垃圾回收器是怎么工作的？" class="headerlink" title="12.分代垃圾回收器是怎么工作的？"></a>12.分代垃圾回收器是怎么工作的？</h2><p>分代回收器有两个分区：<br>堆空间=新生代(1/3)+老生代(2/3)<br>老生代和新生代，新生代默认的空间占比总空间的 1/3，老生代的默认占比是 2/3</p><p>新生代=Eden(8/10)+Survivor(From(1/10)+To(1/10))<br>新生代使用的是复制算法，新生代里有 3 个分区：Eden、To Survivor、From Survivor，它们的默认占比是 8:1:1，它的执行流程如下：</p><ul><li>把 Eden + From Survivor 存活的对象放入 To Survivor 区</li><li>清空 Eden 和 From Survivor 分区</li><li>From Survivor 和 To Survivor 分区交换，From Survivor 变 To Survivor，To Survivor 变 From Survivor</li></ul><p>每次在 From Survivor 到 To Survivor 移动时都存活的对象，年龄就 +1，当年龄到达 15（默认配置是 15）时，升级为老生代<br>大对象也会直接进入老生代<br>老生代当空间占用到达某个值之后就会触发全局垃圾收回，一般使用标记整理的执行算法<br>以上这些循环往复就构成了整个分代垃圾回收的整体执行流程</p><h2 id="13-JVM-调优的工具？"><a href="#13-JVM-调优的工具？" class="headerlink" title="13.JVM 调优的工具？"></a>13.JVM 调优的工具？</h2><p>JDK 自带了很多监控工具，都位于 JDK 的 bin 目录下，其中最常用的是 jconsole 和 jvisualvm 这两款视图监控工具</p><ul><li>jconsole：用于对 JVM 中的内存、线程和类等进行监控</li><li>jvisualvm：JDK 自带的全能分析工具，可以分析：内存快照、线程快照、程序死锁、监控内存的变化、gc 变化等</li></ul><h2 id="14-常用的-JVM-调优的参数都有哪些？"><a href="#14-常用的-JVM-调优的参数都有哪些？" class="headerlink" title="14.常用的 JVM 调优的参数都有哪些？"></a>14.常用的 JVM 调优的参数都有哪些？</h2><ul><li>-Xms2g：初始化推大小为 2g</li><li>-Xmx2g：堆最大内存为 2g</li><li>-XX:NewRatio=4：设置年轻的和老年代的内存比例为 1:4</li><li>-XX:SurvivorRatio=8：设置新生代 Eden 和 Survivor 比例为 8:2</li><li>–XX:+UseParNewGC：指定使用 ParNew + Serial Old 垃圾回收器组合</li><li>-XX:+UseParallelOldGC：指定使用 ParNew + ParNew Old 垃圾回收器组合</li><li>-XX:+UseConcMarkSweepGC：指定使用 CMS + Serial Old 垃圾回收器组合</li><li>-XX:+PrintGC：开启打印 gc 信息</li><li>-XX:+PrintGCDetails：打印 gc 详细信息</li></ul></div><div><div><div style="text-align:center;color:#ccc;font-size:14px">-------------本文结束，感谢阅读-------------</div></div></div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong> xulin</li><li class="post-copyright-link"><strong>本文链接：</strong> <a href="https://blog.xu-lin.top/JAVA虚拟机/2158833482.html" title="JAVA虚拟机">https://blog.xu-lin.top/JAVA虚拟机/2158833482.html</a></li><li class="post-copyright-license"><strong>版权声明：</strong> 本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div><footer class="post-footer"><div class="post-tags"><a href="/tags/JVM/" rel="tag"><i class="fa fa-tag"></i> JVM</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/框架相关/4193427372.html" rel="next" title="框架相关"><i class="fa fa-chevron-left"></i> 框架相关</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/Taro+Taro UI+DvaJS开发小程序/1857577861.html" rel="prev" title="Taro+Taro UI+DvaJS开发小程序">Taro+Taro UI+DvaJS开发小程序<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap">站点概览</li></ul><div class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="xulin"><p class="site-author-name" itemprop="name">xulin</p><p class="site-description motion-element" itemprop="description">分享所知，做自己</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives"><span class="site-state-item-count">33</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/index.html"><span class="site-state-item-count">6</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags/index.html"><span class="site-state-item-count">62</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/Aqpcet" title="GitHub &rarr; https://github.com/Aqpcet" rel="noopener" target="_blank">GitHub</a></span> <span class="links-of-author-item"><a href="https://gitee.com/Aqpcet" title="Gitee &rarr; https://gitee.com/Aqpcet" rel="noopener" target="_blank">Gitee</a></span></div></div></div><div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JVM"><span class="nav-number">1.</span> <span class="nav-text">JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-JVM-的主要组成部分及其作用？"><span class="nav-number">1.1.</span> <span class="nav-text">1.JVM 的主要组成部分及其作用？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-JVM-运行时数据区？"><span class="nav-number">1.2.</span> <span class="nav-text">2.JVM 运行时数据区？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-堆栈的区别？"><span class="nav-number">1.3.</span> <span class="nav-text">3.堆栈的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-什么是双亲委派模型？"><span class="nav-number">1.4.</span> <span class="nav-text">4.什么是双亲委派模型？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-类加载的执行过程？"><span class="nav-number">1.5.</span> <span class="nav-text">5.类加载的执行过程？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-怎么判断对象是否可以被回收？"><span class="nav-number">1.6.</span> <span class="nav-text">6. 怎么判断对象是否可以被回收？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-JAVA-中都有哪些引用类型？"><span class="nav-number">1.7.</span> <span class="nav-text">7.JAVA 中都有哪些引用类型？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-JVM-有哪些垃圾回收算法？"><span class="nav-number">1.8.</span> <span class="nav-text">8.JVM 有哪些垃圾回收算法？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-JVM-有哪些垃圾回收器？"><span class="nav-number">1.9.</span> <span class="nav-text">9.JVM 有哪些垃圾回收器？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-CMS-垃圾回收器？"><span class="nav-number">1.10.</span> <span class="nav-text">10. CMS 垃圾回收器？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-新生代垃圾回收器和老生代垃圾回收器都有哪些？有什么区别？"><span class="nav-number">1.11.</span> <span class="nav-text">11.新生代垃圾回收器和老生代垃圾回收器都有哪些？有什么区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-分代垃圾回收器是怎么工作的？"><span class="nav-number">1.12.</span> <span class="nav-text">12.分代垃圾回收器是怎么工作的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-JVM-调优的工具？"><span class="nav-number">1.13.</span> <span class="nav-text">13.JVM 调优的工具？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-常用的-JVM-调优的参数都有哪些？"><span class="nav-number">1.14.</span> <span class="nav-text">14.常用的 JVM 调优的参数都有哪些？</span></a></li></ol></li></ol></div></div></div><script src="//rf.revolvermaps.com/0/0/6.js?i=5kqhmrx8uen&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async></script></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright"><a href="http://www.miitbeian.gov.cn" rel="noopener" target="_blank">粤ICP备18157124号-2</a> &copy; <span itemprop="copyrightYear">2021</span><span class="with-love" id="animate"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">xulin</span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-area-chart"></i></span> <span class="post-meta-item-text">站点总字数：</span> <span title="站点总字数">93k</span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-coffee"></i></span> <span class="post-meta-item-text">站点阅读时长 &asymp;</span> <span title="站点阅读时长">1:24</span></div><br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><script>var now=new Date;function createtime(){var n=new Date("11/09/2018 05:28:00");now.setTime(now.getTime()+250),days=(now-n)/1e3/60/60/24,dnum=Math.floor(days),hours=(now-n)/1e3/60/60-24*dnum,hnum=Math.floor(hours),1==String(hnum).length&&(hnum="0"+hnum),minutes=(now-n)/1e3/60-1440*dnum-60*hnum,mnum=Math.floor(minutes),1==String(mnum).length&&(mnum="0"+mnum),seconds=(now-n)/1e3-86400*dnum-3600*hnum-60*mnum,snum=Math.round(seconds),1==String(snum).length&&(snum="0"+snum),document.getElementById("timeDate").innerHTML="虚邻存活："+dnum+" 天 ",document.getElementById("times").innerHTML=hnum+" 小时 "+mnum+" 分 "+snum+" 秒"}setInterval("createtime()",250)</script><br></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div><div><div class="addthis_inline_share_toolbox"><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5be8ed83b3d72e21" async></script></div></div></div><script>"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script src="/lib/jquery/index.js?v=2.1.3"></script><script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script src="/lib/three/three.min.js"></script><script src="/lib/three/canvas_lines.min.js"></script><script src="/js/src/utils.js?v=6.6.0"></script><script src="/js/src/motion.js?v=6.6.0"></script><script src="/js/src/scrollspy.js?v=6.6.0"></script><script src="/js/src/post-details.js?v=6.6.0"></script><script src="/js/src/bootstrap.js?v=6.6.0"></script><script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>var GUEST=["nick","mail","link"],guest="nick,mail,link";guest=guest.split(",").filter(function(e){return-1<GUEST.indexOf(e)}),new Valine({el:"#comments",verify:!1,notify:!1,appId:"UB0UdXFamYaPzvz0ePttOdmt-gzGzoHsz",appKey:"c3rW9xD0Aqy3rVB6Eb443HOm",placeholder:"抢沙发啦ヾ(◍°∇°◍)ﾉﾞ",avatar:"mp",meta:guest,pageSize:"10",visitor:!1})</script><script>// Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });</script><script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}()</script><script src="/js/src/js.cookie.js?v=6.6.0"></script><script src="/js/src/scroll-cookie.js?v=6.6.0"></script><style>.copy-btn{display:inline-block;padding:6px 12px;font-size:13px;font-weight:700;line-height:20px;color:#333;white-space:nowrap;vertical-align:middle;cursor:pointer;background-color:#eee;background-image:linear-gradient(#fcfcfc,#eee);border:1px solid #d5d5d5;border-radius:3px;user-select:none;outline:0}.highlight-wrap .copy-btn{transition:opacity .3s ease-in-out;opacity:0;padding:2px 6px;position:absolute;right:4px;top:8px}.highlight-wrap .copy-btn:focus,.highlight-wrap:hover .copy-btn{opacity:1}.highlight-wrap{position:relative}</style><script>$(".highlight").each(function(e,t){var n=$("<div>").addClass("highlight-wrap");$(t).after(n),n.append($("<button>").addClass("copy-btn").append("复制").on("click",function(e){var t=$(this).parent().find(".code").find(".line").map(function(e,t){return $(t).text()}).toArray().join("\n"),n=document.createElement("textarea"),o=document.createRange(),a=window.getSelection(),i=window.pageYOffset||document.documentElement.scrollTop;n.style.top=i+"px",n.style.position="absolute",n.style.opacity="0",n.value=t,n.textContent=t,n.contentEditable=!0,n.readOnly=!1,document.body.appendChild(n),o.selectNode(n),a.removeAllRanges(),a.addRange(o),n.setSelectionRange(0,t.length),document.execCommand("copy")?$(this).text("复制成功"):$(this).text("复制失败"),n.blur(),$(this).blur()})).on("mouseleave",function(e){var t=$(this).find(".copy-btn");setTimeout(function(){t.text("复制")},300)}).append(t)})</script><script>!function(n){var o=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(t,e){var n=new Image,o=t.getAttribute("data-original");n.onload=function(){t.src=o,e&&e()},n.src=o}function c(){for(var t=0;t<o.length;t++)0<=(e=o[t].getBoundingClientRect()).top&&0<=e.left&&e.top<=(n.innerHeight||document.documentElement.clientHeight)&&i(o[t],function(){o.splice(t,t)});var e;console.log("trigger")}c(),n.addEventListener("scroll",function(){var t,e;t=c,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this)</script></body></html>
